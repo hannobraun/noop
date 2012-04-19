@@ -1,0 +1,9 @@
+2012-04-19:
+	Collision response doesn't really fit in the Physics module. It should
+	either have its own module or be part of the Collisions module.
+2012-04-19:
+	Currently, all collisions are completely elastic. It would look and feel a
+	lot better, if they were somewhat inelastic. This requires damping in the
+	collision response code to work correctly, which currently it doesn't.
+2012-04-19:
+	When colliding, objects should transmit some of their rotation.
