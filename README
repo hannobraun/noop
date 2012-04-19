@@ -1,15 +1,47 @@
 # noop framework
 
-## About
+## What is it?
 
-Work in progress. A real README will be available soon. Please check back in a
-few days.
+Noop is a framework for HTML5 games that renders to a
+[canvas 2d context](http://www.w3.org/TR/2dcontext/). It is written in
+CoffeeScript but should be usable from JavaScript without any trouble.
 
-## Author
+
+## Who's using it?
+
+It grew out of a real game project by the author which, at the time of writing,
+is not released yet.
+
+
+## Who's the author?
 
 Hanno Braun
 mail@hannobraun.com
 http://hannobraun.com
+
+
+## What about the name?
+
+Probably its most obvious characteristic is that the framework doesn't use any
+object-oriented programming (oop) techniques. Non-oop, or noop for short,
+describes this programming style and since I couldn't think of any good names, I
+went with it.
+
+The name's also a play on the "no operation" instruction of CPUs, although
+that's normally written "nop".
+
+
+## Why another framework?
+
+I have a lot of odd ideas about programming, so I decided to try some of them
+out.
+
+
+## Is it any good?
+
+It's undocumented, incomplete, mostly unproven and lacks polish. Other than
+that, yes.
+
 
 ## License
 
