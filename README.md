@@ -15,9 +15,9 @@ is not released yet.
 
 ## Who's the author?
 
-Hanno Braun
-mail@hannobraun.com
-[http://hannobraun.com](http://hannobraun.com)
+Hanno Braun<br/>
+[mail@hannobraun.com](mailto:mail@hannobraun.com)<br/>
+[http://hannobraun.com](http://hannobraun.com)<br/>
 
 
 ## What about the name?
@@ -25,7 +25,7 @@ mail@hannobraun.com
 Probably its most obvious characteristic is that the framework doesn't use any
 object-oriented programming (oop) techniques. Non-oop, or noop for short,
 describes this programming style and since I couldn't think of any good names, I
-went with it.
+went with this one.
 
 The name's also a play on the "no operation" instruction of CPUs, although
 that's normally written "nop".
