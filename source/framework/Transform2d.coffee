@@ -1,5 +1,11 @@
 define "Transform2d", [], ->
 	module =
+		identityMatrix: ->
+			[
+				[ 1, 0, 0 ]
+				[ 0, 1, 0 ]
+				[ 0, 0, 1 ] ]
+
 		translationMatrix: ( v ) ->
 			[
 				[ 1, 0, v[ 0 ] ]
