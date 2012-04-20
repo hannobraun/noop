@@ -21,3 +21,11 @@ describe "Transform2d", ->
 		expect( r[ 1 ][ 1 ] ).to.be.within(  0 - tolerance,  0 + tolerance )
 		expect( r[ 1 ][ 2 ] ).to.equal( 0 )
 		expect( r[ 2 ] ).to.eql( [ 0, 0, 1 ] )
+
+	it "should create a transformation matrix for scaling", ->
+		s = Transform2d.scalingMatrix( 2 )
+
+		expect( s ).to.eql( [
+			[ 2, 0, 0 ]
+			[ 0, 2, 0 ]
+			[ 0, 0, 1 ] ] )

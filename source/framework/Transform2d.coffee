@@ -11,3 +11,9 @@ define "Transform2d", [], ->
 				[ Math.cos( angle ), -Math.sin( angle ), 0 ]
 				[ Math.sin( angle ),  Math.cos( angle ), 0 ]
 				[                 0,                  0, 1 ] ]
+
+		scalingMatrix: ( factor ) ->
+			[
+				[ factor,      0, 0 ]
+				[      0, factor, 0 ]
+				[      0,      0, 1 ] ]
