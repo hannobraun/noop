@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Noop is a framework for HTML5 games that renders to a
+noop is a framework for HTML5 games that renders to a
 [canvas 2d context](http://www.w3.org/TR/2dcontext/). It is written in
 CoffeeScript but should be usable from JavaScript without any trouble.
 
