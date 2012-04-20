@@ -43,6 +43,13 @@ It's undocumented, incomplete, mostly unproven and lacks polish. Other than
 that, yes.
 
 
+## So how do I get started?
+
+The quickest way is to clone the
+[noop-skeleton](https://github.com/hbraun/noop-skeleton) repository and follow
+the directions there.
+
+
 ## License
 
 The noop framework is available under the license displayed below. This
