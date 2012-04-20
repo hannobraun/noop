@@ -58,10 +58,6 @@ define "Rendering", [], ->
 				position   : [ 0, 0 ]
 				orientation: 0
 
-		createCamera: ->
-			camera =
-				position: [ 0, 0 ]
-
 		render: ( display, renderData, renderables ) ->
 			context = display.context
 
