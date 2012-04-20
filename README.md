@@ -50,6 +50,12 @@ The quickest way is to clone the
 the directions there.
 
 
+## I'd like to talk about this.
+
+Feel free to drop me an email or post a comment
+[on my blog](http://blog.hannobraun.com/2012/04/20/noop-a-html5-game-framework/).
+
+
 ## License
 
 The noop framework is available under the license displayed below. This
