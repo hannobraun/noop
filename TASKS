@@ -22,9 +22,6 @@
 	automatically. Having to add empty maps for all types of components manually
 	doesn't really serve any purpose.
 2012-04-23:
-	Using collisions detection requires a lot of glue code. This should be
-	improved.
-2012-04-23:
 	Sometimes it is necessary to prevent the default behavior of input events
 	using event.preventDefault(), for example to prevent accidental scrolling of
 	the website. This should be supported by the Input module.
