@@ -1,8 +1,5 @@
 2012-04-19:
 	When colliding, objects should transmit some of their rotation.
-2012-04-20:
-	Instead of Loader loading the game, Loader should be used by the game to
-	load stuff. Less "framework", more "library".
 2012-04-23:
 	It should be possible to extend the draw functions in the Rendering module
 	with new ones. There should also be more draw functions for different kinds
