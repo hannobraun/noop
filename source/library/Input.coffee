@@ -112,11 +112,17 @@ define "Input", [], ->
 		keyNamesByCode: keyNamesByCode
 		keyCodesByName: keyCodesByName
 
-		createCurrentInput: ->
+		createCurrentInput: ( defaultsToPrevent ) ->
+			preventDefaultFor = {}
+			for keyName in defaultsToPrevent
+				keyCode = keyCodesByName[ keyName ]
+				preventDefaultFor[ keyCode ] = true
+
 			currentInput = {}
 
 			window.addEventListener "keydown", ( keyDownEvent ) ->
-				currentInput[ keyNamesByCode[ keyDownEvent.keyCode ] ] = true
+				unless preventDefaultFor[ keyDownEvent.keyCode ]
+					currentInput[ keyNamesByCode[ keyDownEvent.keyCode ] ] = true
 
 			window.addEventListener "keyup", ( keyUpEvent ) ->
 				currentInput[ keyNamesByCode[ keyUpEvent.keyCode ] ] = false
