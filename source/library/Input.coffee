@@ -122,13 +122,17 @@ define "Input", [], ->
 
 			window.addEventListener "keydown", ( keyDownEvent ) ->
 				unless preventDefaultFor[ keyDownEvent.keyCode ]
-					currentInput[ keyNamesByCode[ keyDownEvent.keyCode ] ] = true
+					keyName = keyNamesByCode[ keyDownEvent.keyCode ]
+					currentInput[ keyName ] = true
 
 			window.addEventListener "keyup", ( keyUpEvent ) ->
-				currentInput[ keyNamesByCode[ keyUpEvent.keyCode ] ] = false
+				keyName = keyNamesByCode[ keyUpEvent.keyCode ]
+				currentInput[ keyName ] = false
 
 			currentInput
 
 		isKeyDown: ( currentInput, keyName ) ->
 			ensureKeyNameIsValid( keyName )
 			currentInput[ keyName ] == true
+
+
