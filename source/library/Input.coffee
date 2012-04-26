@@ -121,15 +121,19 @@ define "Input", [], ->
 		keyNamesByCode: keyNamesByCode
 		keyCodesByName: keyCodesByName
 
-		createCurrentInput: ( defaultsToPrevent ) ->
-			preventDefaultFor = keyNameArrayToKeyCodeSet( defaultsToPrevent )
+		preventDefaultsFor: ( keyNames ) ->
+			keyCodeSet = keyNameArrayToKeyCodeSet( keyNames )
 
+			window.addEventListener "keypress", ( keyPressEvent ) ->
+				if preventDefaultFor[ keyDownEvent.keyCode ]
+					keyDownEvent.preventDefault()
+
+		createCurrentInput: ->
 			currentInput = {}
 
 			window.addEventListener "keydown", ( keyDownEvent ) ->
-				unless preventDefaultFor[ keyDownEvent.keyCode ]
-					keyName = keyNamesByCode[ keyDownEvent.keyCode ]
-					currentInput[ keyName ] = true
+				keyName = keyNamesByCode[ keyDownEvent.keyCode ]
+				currentInput[ keyName ] = true
 
 			window.addEventListener "keyup", ( keyUpEvent ) ->
 				keyName = keyNamesByCode[ keyUpEvent.keyCode ]
@@ -137,19 +141,16 @@ define "Input", [], ->
 
 			currentInput
 
+		onKeys: ( keyNames, callback ) ->
+			keysOfInterest = keyNameArrayToKeyCodeSet( keyNames )
+
+			window.addEventListener "keypress", ( keyPressEvent ) ->
+				if keysOfInterest[ keyPressEvent.keyCode ]
+					keyName = keyNamesByCode[ keyPressEvent.keyCode ]
+					callback(
+						keyName,
+						keyPressEvent )
+
 		isKeyDown: ( currentInput, keyName ) ->
 			ensureKeyNameIsValid( keyName )
 			currentInput[ keyName ] == true
-
-		createEventEmitter: ( defaultsToPrevent ) ->
-			preventDefaultFor = keyNameArrayToKeyCodeSet( defaultsToPrevent )
-
-			eventEmitter =
-				on: ( keyNames, f ) ->
-					keysOfInterest = keyNameArrayToKeyCodeSet( keyNames )
-
-					window.addEventListener "keypress", ( keyPressEvent ) ->
-						if keysOfInterest[ keyPressEvent.keyCode ]
-							f(
-								keyNamesByCode[ keyPressEvent.keyCode ],
-								keyPressEvent )
