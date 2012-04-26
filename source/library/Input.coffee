@@ -108,15 +108,21 @@ define "Input", [], ->
 		unless keyCodesByName[ keyName ]?
 			throw "\"#{ keyName }\" is not a valid key name."
 
+	keyNameArrayToKeyCodeSet = ( keyNameArray ) ->
+		keyCodeSet = {}
+
+		for keyName in keyNameArray
+			keyCode = keyCodesByName[ keyName ]
+			keyCodeSet[ keyCode ] = true
+
+		keyCodeSet
+
 	module =
 		keyNamesByCode: keyNamesByCode
 		keyCodesByName: keyCodesByName
 
 		createCurrentInput: ( defaultsToPrevent ) ->
-			preventDefaultFor = {}
-			for keyName in defaultsToPrevent
-				keyCode = keyCodesByName[ keyName ]
-				preventDefaultFor[ keyCode ] = true
+			preventDefaultFor = keyNameArrayToKeyCodeSet( defaultsToPrevent )
 
 			currentInput = {}
 
@@ -135,4 +141,15 @@ define "Input", [], ->
 			ensureKeyNameIsValid( keyName )
 			currentInput[ keyName ] == true
 
+		createEventEmitter: ( defaultsToPrevent ) ->
+			preventDefaultFor = keyNameArrayToKeyCodeSet( defaultsToPrevent )
 
+			eventEmitter =
+				on: ( keyNames, f ) ->
+					keysOfInterest = keyNameArrayToKeyCodeSet( keyNames )
+
+					window.addEventListener "keypress", ( keyPressEvent ) ->
+						if keysOfInterest[ keyPressEvent.keyCode ]
+							f(
+								keyNamesByCode[ keyPressEvent.keyCode ],
+								keyPressEvent )
