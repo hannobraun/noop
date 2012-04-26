@@ -144,12 +144,12 @@ define "Input", [], ->
 		onKeys: ( keyNames, callback ) ->
 			keysOfInterest = keyNameArrayToKeyCodeSet( keyNames )
 
-			window.addEventListener "keypress", ( keyPressEvent ) ->
-				if keysOfInterest[ keyPressEvent.keyCode ]
-					keyName = keyNamesByCode[ keyPressEvent.keyCode ]
+			window.addEventListener "keydown", ( keyDownEvent ) ->
+				if keysOfInterest[ keyDownEvent.keyCode ]
+					keyName = keyNamesByCode[ keyDownEvent.keyCode ]
 					callback(
 						keyName,
-						keyPressEvent )
+						keyDownEvent )
 
 		isKeyDown: ( currentInput, keyName ) ->
 			ensureKeyNameIsValid( keyName )
