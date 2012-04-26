@@ -1,5 +1,7 @@
 define "Rendering", [], ->
 	module =
+		# The draw functions were written as needed for specific purposes and
+		# then moved into the library. They could use some cleanup.
 		drawFunctions:
 			"image": ( images, context, renderable ) ->
 				image = images[ renderable.resourceId ]
@@ -34,6 +36,73 @@ define "Rendering", [], ->
 					Math.PI * 2,
 					true )
 				context.stroke()
+
+			"ellipse":( _, context, renderable ) ->
+				ellipse = renderable.resource
+
+				context.strokeStyle = ellipse.color
+
+				context.translate(
+					renderable.position[ 0 ],
+					renderable.position[ 1 ] )
+				context.rotate(
+					renderable.orientation )
+				context.scale(
+					ellipse.semiMajorAxis / ellipse.semiMinorAxis,
+					1 )
+				context.beginPath()
+				context.arc(
+					0,
+					0,
+					ellipse.semiMinorAxis,
+					0,
+					2*Math.PI,
+					false )
+				context.stroke()
+				context.closePath()
+
+			"rectangle": ( _, context, renderable ) ->
+				rectangle = renderable.resource
+
+				context.fillStyle = rectangle.color || "rgb(255,255,255)"
+				context.fillRect(
+					renderable.position[ 0 ],
+					renderable.position[ 1 ],
+					rectangle.size[ 0 ],
+					rectangle.size[ 1 ] )
+
+			"rectangleOutline": ( _, context, renderable ) ->
+				rectangle = renderable.resource
+
+				context.strokeStyle = rectangle.color || "rgb(0,0,0)"
+				context.strokeRect(
+					renderable.position[ 0 ],
+					renderable.position[ 1 ],
+					rectangle.size[ 0 ],
+					rectangle.size[ 1 ] )
+
+			"line": ( _, context, renderable ) ->
+				line = renderable.resource
+
+				context.strokeStyle = line.color || "rgb(255,255,255)"
+				context.beginPath()
+				context.moveTo( line.start[ 0 ], line.start[ 1 ] )
+				context.lineTo( line.end[ 0 ], line.end[ 1 ] )
+				context.closePath()
+				context.stroke()
+
+			"text": ( _, context, renderable ) ->
+				text = renderable.resource
+
+				context.fillStyle = text.color || "rgb(0,0,0)"
+				if text.font?
+					context.font = text.font
+				if text.bold?
+					context.font = "bold #{ context.font }"
+				context.fillText(
+					text.string,
+					renderable.position[ 0 ],
+					renderable.position[ 1 ] )
 				
 		createDisplay: ->
 			canvas  = document.getElementById( "canvas" )
