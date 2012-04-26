@@ -121,7 +121,7 @@ define "Input", [], ->
 		keyNamesByCode: keyNamesByCode
 		keyCodesByName: keyCodesByName
 
-		preventDefaultsFor: ( keyNames ) ->
+		preventDefaultFor: ( keyNames ) ->
 			keyCodeSet = keyNameArrayToKeyCodeSet( keyNames )
 
 			window.addEventListener "keypress", ( keyPressEvent ) ->
