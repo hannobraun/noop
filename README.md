@@ -1,16 +1,18 @@
-# noop framework
+# noop game library
 
 ## What is it?
 
-noop is a framework for HTML5 games that renders to a
-[canvas 2d context](http://www.w3.org/TR/2dcontext/). It is written in
-CoffeeScript but should be usable from JavaScript without any trouble.
+noop is a library that helps with creation HTML5 games. It uses a
+[canvas 2d context](http://www.w3.org/TR/2dcontext/) for rendering. The library
+is written in CoffeeScript but should be usable from JavaScript without any
+trouble.
 
 
 ## Who's using it?
 
-It grew out of a real game project by the author which, at the time of writing,
-is not released yet.
+noop grew out of a game project by the author which, at the time of writing, is
+not released yet. The only released game using it so far is the Ludum Dare #23
+entry [Tiny World War](http://www.kongregate.com/games/hannobraun/tiny-world-war-singleplayer-edition).
 
 
 ## Who's the author?
@@ -22,8 +24,8 @@ Hanno Braun<br/>
 
 ## What about the name?
 
-Probably its most obvious characteristic is that the framework doesn't use any
-object-oriented programming (oop) techniques. Non-oop, or noop for short,
+What is probably noop's most obvious characteristic is the lack of any
+object-oriented programming (oop )techniques. Non-oop, or noop for short,
 describes this programming style and since I couldn't think of any good names, I
 went with this one.
 
@@ -31,7 +33,7 @@ The name's also a play on the "no operation" instruction of CPUs, although
 that's normally written "nop".
 
 
-## Why another framework?
+## Why another library?
 
 I have a lot of odd ideas about programming, so I decided to try some of them
 out.
@@ -39,8 +41,7 @@ out.
 
 ## Is it any good?
 
-It's undocumented, incomplete, mostly unproven and lacks polish. Other than
-that, yes.
+It's undocumented, incomplete and lacks polish. Other than that, yes.
 
 
 ## So how do I get started?
@@ -58,8 +59,8 @@ Feel free to drop me an email or post a comment
 
 ## License
 
-The noop framework is available under the license displayed below. This
-repository might also contain third-party code which is available under its own
+The noop game library is available under the license below. This repository
+might also contain third-party code which is available under its own respective
 license.
 
 Copyright (c) 2012, Hanno Braun
