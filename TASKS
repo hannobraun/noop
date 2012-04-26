@@ -14,9 +14,5 @@
 	deployable page from game. Deployment should support deployment to a
 	gh-pages branch on GitHub.
 2012-04-26:
-	The setTimeout fallback for requestAnimationFrame doesn't work
-	(noop-skeleton). This functionality should really reside in a test-covered
-	module in the framework.
-2012-04-26:
 	Setting the damping factor in collision response to anything other than
 	zero causes some strange behavior. This needs to be investigated.
