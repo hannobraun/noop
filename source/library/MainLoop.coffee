@@ -12,7 +12,7 @@ define "MainLoop", [], ->
 
 	module =
 		execute: ( f, callNextFrame ) ->
-			callNextFrame      = callNextFrame || defaultCallNextFrame
+			callNextFrame = callNextFrame || defaultCallNextFrame
 
 			previousTimeInMs = null
 
