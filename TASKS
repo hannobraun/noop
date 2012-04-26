@@ -46,3 +46,7 @@
 	There should be an easy way (a shell script or something) to create a
 	deployable page from game. Deployment should support deployment to a
 	gh-pages branch on GitHub.
+2012-04-26:
+	The setTimeout fallback for requestAnimationFrame doesn't work
+	(noop-skeleton). This functionality should really reside in a test-covered
+	module in the framework.
