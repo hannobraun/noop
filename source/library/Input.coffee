@@ -124,9 +124,9 @@ define "Input", [], ->
 		preventDefaultFor: ( keyNames ) ->
 			keyCodeSet = keyNameArrayToKeyCodeSet( keyNames )
 
-			window.addEventListener "keypress", ( keyPressEvent ) ->
-				if keyCodeSet[ keyPressEvent.keyCode ]
-					keyPressEvent.preventDefault()
+			window.addEventListener "keydown", ( keyDownEvent ) ->
+				if keyCodeSet[ keyDownEvent.keyCode ]
+					keyDownEvent.preventDefault()
 
 		createCurrentInput: ->
 			currentInput = {}
