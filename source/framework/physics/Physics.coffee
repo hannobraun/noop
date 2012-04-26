@@ -21,16 +21,6 @@ define "Physics", [ "Vec2" ], ( Vec2 ) ->
 			for entityId, body of bodies
 				body.orientation += body.angularVelocity * passedTimeInS
 
-		applyForces: ( bodies ) ->
-			for entityId, body of bodies
-				body.acceleration = [ 0, 0 ]
-
-				for force in body.forces
-					Vec2.scale( force, 1 / body.mass )
-					Vec2.add( body.acceleration, force )
-
-				body.forces.length = 0
-
 		update: ( bodies, passedTimeInS, integrate ) ->
 			integrate( bodies, passedTimeInS )
 			module.integrateOrientation( bodies, passedTimeInS )
