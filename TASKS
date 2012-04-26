@@ -7,10 +7,6 @@
 	Currently, the event API is converted into a poll API, which then has to be
 	mis-used to get events out of again.
 2012-04-23:
-	The Entities module should initialize the components data structure
-	automatically. Having to add empty maps for all types of components manually
-	doesn't really serve any purpose.
-2012-04-23:
 	Sometimes it is necessary to prevent the default behavior of input events
 	using event.preventDefault(), for example to prevent accidental scrolling of
 	the website. This should be supported by the Input module.
