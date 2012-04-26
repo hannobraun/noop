@@ -1,1 +1,4 @@
-coffee --watch --compile --join output/test.js source/modules source/framework test
+coffee --watch --compile --join output/test.js \
+	source/modules \
+	source/library \
+	test
