@@ -1,14 +1,6 @@
 2012-04-19:
 	When colliding, objects should transmit some of their rotation.
 2012-04-23:
-	It should be possible to extend the draw functions in the Rendering module
-	with new ones. There should also be more draw functions for different kinds
-	of primitives (Tiny World War has a few of these that could be imported).
-2012-04-23:
-	Per-renderable render data should be supported. The current approach is good
-	for render data that is re-used for many renderables (like images or
-	collision geometry) but falls flat for a lot of other use cases.
-2012-04-23:
 	There should be a better system for input events. While the current approach
 	works well for many kinds of game controls, a lot of UI stuff becomes
 	tedious, since single events for key presses are often needed.
