@@ -19,9 +19,7 @@ describe "Entities", ->
 			componentA = {}
 			componentB = {}
 
-			components =
-				"componentA": {}
-				"componentB": {}
+			components = {}
 
 			entityFactories =
 				"myEntity": ( args ) ->
