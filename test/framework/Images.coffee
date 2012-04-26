@@ -27,8 +27,8 @@ expect.Assertion.prototype.lookLikeThisArray = ( array ) ->
 describe "Images", ->
 	it "should load the given images and pass them to the callback", ( done ) ->
 		imagePaths = [
-			"test/1x1red.png"
-			"test/1x1green.png" ]
+			"test/resources/1x1red.png"
+			"test/resources/1x1green.png" ]
 
 		Images.loadImages imagePaths, ( images ) ->
 			red   = imageDataFrom( images[ imagePaths[ 0 ] ] )
