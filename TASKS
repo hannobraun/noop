@@ -7,10 +7,6 @@
 	Currently, the event API is converted into a poll API, which then has to be
 	mis-used to get events out of again.
 2012-04-23:
-	Sometimes it is necessary to prevent the default behavior of input events
-	using event.preventDefault(), for example to prevent accidental scrolling of
-	the website. This should be supported by the Input module.
-2012-04-23:
 	Building UIs is very tedious. There should be some basic support for this.
 	For an example use case, see Tiny World War.
 2012-04-24:
