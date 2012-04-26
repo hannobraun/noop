@@ -3,11 +3,7 @@ define "Rendering", [], ->
 		# The draw functions were written as needed for specific purposes and
 		# then moved into the library. They could use some cleanup.
 		drawFunctions:
-			"image": ( images, context, renderable ) ->
-				image = images[ renderable.resourceId ]
-				unless image?
-					throw "Image #{ renderable.resourceId } does not exist."
-
+			"image": ( renderable, context, image ) ->
 				context.translate(
 					renderable.position[ 0 ],
 					renderable.position[ 1 ] )
@@ -17,9 +13,7 @@ define "Rendering", [], ->
 					image.positionOffset[ 1 ] )
 				context.drawImage( image.rawImage, 0, 0 )
 
-			"circle": ( shapes, context, renderable ) ->
-				shape = shapes[ renderable.resourceId ]
-
+			"circle": ( renderable, context, shape ) ->
 				context.translate(
 					renderable.position[ 0 ],
 					renderable.position[ 1 ] )
@@ -37,9 +31,7 @@ define "Rendering", [], ->
 					true )
 				context.stroke()
 
-			"ellipse":( _, context, renderable ) ->
-				ellipse = renderable.resource
-
+			"ellipse":( renderable, context, ellipse ) ->
 				context.strokeStyle = ellipse.color
 
 				context.translate(
@@ -61,9 +53,7 @@ define "Rendering", [], ->
 				context.stroke()
 				context.closePath()
 
-			"rectangle": ( _, context, renderable ) ->
-				rectangle = renderable.resource
-
+			"rectangle": ( renderable, context, rectangle ) ->
 				context.fillStyle = rectangle.color || "rgb(255,255,255)"
 				context.fillRect(
 					renderable.position[ 0 ],
@@ -71,9 +61,7 @@ define "Rendering", [], ->
 					rectangle.size[ 0 ],
 					rectangle.size[ 1 ] )
 
-			"rectangleOutline": ( _, context, renderable ) ->
-				rectangle = renderable.resource
-
+			"rectangleOutline": ( renderable, context, rectangle ) ->
 				context.strokeStyle = rectangle.color || "rgb(0,0,0)"
 				context.strokeRect(
 					renderable.position[ 0 ],
@@ -81,9 +69,7 @@ define "Rendering", [], ->
 					rectangle.size[ 0 ],
 					rectangle.size[ 1 ] )
 
-			"line": ( _, context, renderable ) ->
-				line = renderable.resource
-
+			"line": ( renderable, context, line ) ->
 				context.strokeStyle = line.color || "rgb(255,255,255)"
 				context.beginPath()
 				context.moveTo( line.start[ 0 ], line.start[ 1 ] )
@@ -91,9 +77,7 @@ define "Rendering", [], ->
 				context.closePath()
 				context.stroke()
 
-			"text": ( _, context, renderable ) ->
-				text = renderable.resource
-
+			"text": ( renderable, context, text ) ->
 				context.fillStyle = text.color || "rgb(0,0,0)"
 				if text.font?
 					context.font = text.font
@@ -144,7 +128,16 @@ define "Rendering", [], ->
 				context.save()
 
 				type = renderable.type
+
+				resource = if renderable.resource?
+					renderable.resource
+				else
+					renderData[ type ][ renderable.resourceId ]
+
+				unless resource?
+					throw "Resource #{ renderable.resourceId } does not exist."
+
 				drawRenderable = drawFunctions[ type ]
-				drawRenderable( renderData[ type ], context, renderable )
+				drawRenderable( renderable, context, resource )
 
 				context.restore()
