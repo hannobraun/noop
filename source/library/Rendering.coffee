@@ -1,40 +1,40 @@
 define "Rendering", [], ->
-	drawFunctions =
-		"image": ( images, context, renderable ) ->
-			image = images[ renderable.resourceId ]
-			unless image?
-				throw "Image #{ renderable.resourceId } does not exist."
-
-			context.translate(
-				renderable.position[ 0 ],
-				renderable.position[ 1 ] )
-			context.rotate( renderable.orientation + image.orientationOffset )
-			context.translate(
-				image.positionOffset[ 0 ],
-				image.positionOffset[ 1 ] )
-			context.drawImage( image.rawImage, 0, 0 )
-
-		"circle": ( shapes, context, renderable ) ->
-			shape = shapes[ renderable.resourceId ]
-
-			context.translate(
-				renderable.position[ 0 ],
-				renderable.position[ 1 ] )
-			context.rotate( renderable.orientation )
-			context.translate(
-				shape.offset[ 0 ],
-				shape.offset[ 1 ] )
-			context.beginPath()
-			context.arc(
-				0,
-				0,
-				shape.circle.radius,
-				0,
-				Math.PI * 2,
-				true )
-			context.stroke()
-
 	module =
+		drawFunctions:
+			"image": ( images, context, renderable ) ->
+				image = images[ renderable.resourceId ]
+				unless image?
+					throw "Image #{ renderable.resourceId } does not exist."
+
+				context.translate(
+					renderable.position[ 0 ],
+					renderable.position[ 1 ] )
+				context.rotate( renderable.orientation + image.orientationOffset )
+				context.translate(
+					image.positionOffset[ 0 ],
+					image.positionOffset[ 1 ] )
+				context.drawImage( image.rawImage, 0, 0 )
+
+			"circle": ( shapes, context, renderable ) ->
+				shape = shapes[ renderable.resourceId ]
+
+				context.translate(
+					renderable.position[ 0 ],
+					renderable.position[ 1 ] )
+				context.rotate( renderable.orientation )
+				context.translate(
+					shape.offset[ 0 ],
+					shape.offset[ 1 ] )
+				context.beginPath()
+				context.arc(
+					0,
+					0,
+					shape.circle.radius,
+					0,
+					Math.PI * 2,
+					true )
+				context.stroke()
+				
 		createDisplay: ->
 			canvas  = document.getElementById( "canvas" )
 			context = canvas.getContext( "2d" )
@@ -58,7 +58,7 @@ define "Rendering", [], ->
 				position   : [ 0, 0 ]
 				orientation: 0
 
-		render: ( display, renderData, renderables ) ->
+		render: ( drawFunctions, display, renderData, renderables ) ->
 			context = display.context
 
 			width  = display.size[ 0 ]
