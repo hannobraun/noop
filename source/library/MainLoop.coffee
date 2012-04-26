@@ -11,11 +11,10 @@ define "MainLoop", [], ->
 				window.setTimeout( f, 1000 / 60, Date.now() )
 
 	module =
-		execute: ( f, callNextFrame, getCurrentTimeInMs ) ->
-			callNextFrame      = callNextFrame      || defaultCallNextFrame
-			getCurrentTimeInMs = getCurrentTimeInMs || Date.now
+		execute: ( f, callNextFrame ) ->
+			callNextFrame      = callNextFrame || defaultCallNextFrame
 
-			previousTimeInMs = getCurrentTimeInMs()
+			previousTimeInMs = null
 
 			mainLoop = ( currentTimeInMs ) ->
 				passedTimeInMs   = currentTimeInMs - previousTimeInMs
@@ -32,4 +31,4 @@ define "MainLoop", [], ->
 
 				callNextFrame( mainLoop )
 
-			mainLoop( previousTimeInMs )
+			callNextFrame( mainLoop )
