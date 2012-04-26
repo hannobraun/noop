@@ -51,10 +51,11 @@ define "Rendering", [], ->
 				context: context,
 				size   : [ canvas.width, canvas.height ]
 
-		createRenderable: ( type, resourceId ) ->
+		createRenderable: ( type ) ->
 			renderable =
 				type       : type
-				resourceId : resourceId
+				resourceId : null
+				resource   : null
 				position   : [ 0, 0 ]
 				orientation: 0
 
