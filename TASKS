@@ -10,3 +10,54 @@
 2012-04-26:
 	Setting the damping factor in collision response to anything other than
 	zero causes some strange behavior. This needs to be investigated.
+2012-05-09:
+	Change the project structure in noop-skeleton. The one I tried in Ludus
+	seems to be a lot more clear.
+2012-05-09:
+	Port improvements from Ludus. These include (but might not be limited to):
+	- Improvements in Input module.
+	- Improvements in Rendering module.
+	- New draw functions.
+2012-05-09:
+	There should be a nice error message, if the factory function for an entity
+	can not be found.
+2012-05-09:
+	The MainLoop module probably won't run in IE. Check out Tiny World War, the
+	issue should be fixed there.
+2012-05-09:
+	If a browser doesn't support canvas, there should be a message apoligizing
+	and explaining the situation.
+2012-05-09:
+	Renderable creation should be easier and require less code.
+	- There should be two factory functions, one which creates renderables that
+	  reference a resource, another which creates renderables that contain the
+	  resource.
+	- The resource id or resource itself should be passed into the factory
+	  function, so there is no need to modify the renderable afterwards.
+2012-05-09:
+	Renderable position and orientation should be handled differently:
+	- They don't make sense for all kinds of renderables. Some renderables might
+	  have different properties (e.g. for a line "start" and "end" make more
+	  sense than "position" and "end"), others might represent a global effect.
+	  This is an argument for folding them into the resource itself.
+	- Renderables that only reference resources may still need position and
+	  orientation.
+	- Handling position and orientation leads to repetitive code in draw
+	  functions. This and the previous point might be an argument to only have
+	  them in referencing renderables and have the render function handle them.
+2012-05-09:
+	"load" should be remaned to "require", making it more compatible to CommonJS
+	AMD and more familiar to people used to it.
+2012-05-09:
+	Text rendering should be more generic, supporting left, center and right
+	alignments.
+2012-05-09:
+	Code using the math modules looks like shit. Simple things are twice as long
+	as they have to be, complex things are completely unreadable. There has to
+	be a way to make vector math with in-place updated more usable. If not, we
+	should do some research into using "immutable" vectors. Maybe the effects on
+	garbage collection are not as bad as I fear.
+2012-05-09:
+	Right now, there are different draw functions for stroke'd and fill'd
+	primitives. Those should be consolidated. The matter of filling or stroking
+	should be handled by a flag in the resource.
