@@ -22,9 +22,6 @@
 	There should be a nice error message, if the factory function for an entity
 	can not be found.
 2012-05-09:
-	The MainLoop module probably won't run in IE. Check out Tiny World War, the
-	issue should be fixed there.
-2012-05-09:
 	If a browser doesn't support canvas, there should be a message apoligizing
 	and explaining the situation.
 2012-05-09:
