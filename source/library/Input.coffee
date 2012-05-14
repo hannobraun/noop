@@ -132,7 +132,7 @@ define "Input", [], ->
 		left = 0
 		top  = 0
 
-		while element.tagName != "body"
+		while element?
 			left += element.offsetLeft
 			top  += element.offsetTop
 
