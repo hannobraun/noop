@@ -8,7 +8,10 @@ define "MainLoop", [], ->
 			window.oRequestAnimationFrame ||
 			window.msRequestAnimationFrame ||
 			( f ) ->
-				window.setTimeout( f, 1000 / 60, Date.now() )
+				window.setTimeout(
+					->
+						f( Date.now() )
+					, 1000 / 60 )
 
 	module =
 		execute: ( f, callNextFrame ) ->
