@@ -101,7 +101,8 @@ define "Rendering", [], ->
 			 	canvas.height / 2 )
 			
 			display =
-				context: context,
+				canvas : canvas
+				context: context
 				size   : [ canvas.width, canvas.height ]
 
 		createRenderable: ( type ) ->
