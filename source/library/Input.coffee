@@ -100,12 +100,21 @@ define "Input", [], ->
 		221: "close braket"
 		222: "single quote"
 
+	mouseKeyNamesByCode =
+		0: "left mouse button"
+		1: "middle mouse button"
+		2: "right mouse button"
+
 	keyCodesByName = {}
 	for keyCode, keyName of keyNamesByCode
 		keyCodesByName[ keyName ] = parseInt( keyCode )
 
+	mouseKeyCodesByName = {}
+	for keyCode, keyName of mouseKeyNamesByCode
+		mouseKeyCodesByName[ keyName ] = parseInt( keyCode )
+
 	ensureKeyNameIsValid = ( keyName ) ->
-		unless keyCodesByName[ keyName ]?
+		unless keyCodesByName[ keyName ]? or mouseKeyCodesByName[ keyName ]?
 			throw "\"#{ keyName }\" is not a valid key name."
 
 	keyNameArrayToKeyCodeSet = ( keyNameArray ) ->
@@ -117,9 +126,30 @@ define "Input", [], ->
 
 		keyCodeSet
 
+	updatePointerPosition = ( pointerPosition, display, event ) ->
+		element = display.canvas
+
+		left = 0
+		top  = 0
+
+		while element.tagName != "body"
+			left += element.offsetLeft
+			top  += element.offsetTop
+
+			element = element.offsetParent
+
+		pointerPosition[ 0 ] = event.clientX - left + window.pageXOffset
+		pointerPosition[ 1 ] = event.clientY - top  + window.pageYOffset
+
+		pointerPosition[ 0 ] -= display.size[ 0 ] / 2
+		pointerPosition[ 1 ] -= display.size[ 1 ] / 2
+
 	module =
-		keyNamesByCode: keyNamesByCode
-		keyCodesByName: keyCodesByName
+		keyNamesByCode     : keyNamesByCode
+		mouseKeyNamesByCode: mouseKeyNamesByCode
+
+		keyCodesByName     : keyCodesByName
+		mouseKeyCodesByName: mouseKeyCodesByName
 
 		preventDefaultFor: ( keyNames ) ->
 			keyCodeSet = keyNameArrayToKeyCodeSet( keyNames )
@@ -128,16 +158,32 @@ define "Input", [], ->
 				if keyCodeSet[ keyDownEvent.keyCode ]
 					keyDownEvent.preventDefault()
 
-		createCurrentInput: ->
-			currentInput = {}
+		createCurrentInput: ( display ) ->
+			currentInput =
+				pressedKeys    : {}
+				pointerPosition: [ 0, 0 ]
 
 			window.addEventListener "keydown", ( keyDownEvent ) ->
 				keyName = keyNamesByCode[ keyDownEvent.keyCode ]
-				currentInput[ keyName ] = true
+				currentInput.pressedKeys[ keyName ] = true
 
 			window.addEventListener "keyup", ( keyUpEvent ) ->
 				keyName = keyNamesByCode[ keyUpEvent.keyCode ]
-				currentInput[ keyName ] = false
+				currentInput.pressedKeys[ keyName ] = false
+
+			window.addEventListener "mousedown", ( event ) ->
+				keyName = mouseKeyNamesByCode[ event.button ]
+				currentInput.pressedKeys[ keyName ] = true
+
+			window.addEventListener "mouseup", ( event ) ->
+				keyName = mouseKeyNamesByCode[ event.button ]
+				currentInput.pressedKeys[ keyName ] = false
+
+			display.canvas.addEventListener "mousemove", ( mouseMoveEvent ) ->
+				updatePointerPosition(
+					currentInput.pointerPosition,
+					display,
+					mouseMoveEvent )
 
 			currentInput
 
@@ -153,4 +199,4 @@ define "Input", [], ->
 
 		isKeyDown: ( currentInput, keyName ) ->
 			ensureKeyNameIsValid( keyName )
-			currentInput[ keyName ] == true
+			currentInput.pressedKeys[ keyName ] == true
