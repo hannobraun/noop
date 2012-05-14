@@ -43,9 +43,6 @@
 	  functions. This and the previous point might be an argument to only have
 	  them in referencing renderables and have the render function handle them.
 2012-05-09:
-	"load" should be remaned to "require", making it more compatible to CommonJS
-	AMD and more familiar to people used to it.
-2012-05-09:
 	Text rendering should be more generic, supporting left, center and right
 	alignments.
 2012-05-09:
