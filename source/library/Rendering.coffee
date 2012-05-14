@@ -31,6 +31,20 @@ define "Rendering", [], ->
 					true )
 				context.stroke()
 
+			"filledCircle": ( renderable, context, circle ) ->
+				context.fillStyle = circle.color
+
+				context.beginPath()
+				context.arc(
+					renderable.position[ 0 ],
+					renderable.position[ 1 ],
+					circle.radius,
+					0,
+					2*Math.PI,
+					false )
+				context.fill()
+				context.closePath()
+
 			"ellipse":( renderable, context, ellipse ) ->
 				context.strokeStyle = ellipse.color
 
