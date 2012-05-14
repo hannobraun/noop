@@ -11,19 +11,8 @@
 	Setting the damping factor in collision response to anything other than
 	zero causes some strange behavior. This needs to be investigated.
 2012-05-09:
-	Change the project structure in noop-skeleton. The one I tried in Ludus
-	seems to be a lot more clear.
-2012-05-09:
-	Port improvements from Ludus. These include (but might not be limited to):
-	- Improvements in Input module.
-	- Improvements in Rendering module.
-	- New draw functions.
-2012-05-09:
 	There should be a nice error message, if the factory function for an entity
 	can not be found.
-2012-05-09:
-	If a browser doesn't support canvas, there should be a message apoligizing
-	and explaining the situation.
 2012-05-09:
 	Renderable creation should be easier and require less code.
 	- There should be two factory functions, one which creates renderables that
