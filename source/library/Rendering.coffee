@@ -80,15 +80,27 @@ define "Rendering", [], ->
 				context.stroke()
 
 			"text": ( renderable, context, text ) ->
-				context.fillStyle = text.color || "rgb(0,0,0)"
+				context.fillStyle = text.textColor || "rgb(0,0,0)"
 				if text.font?
 					context.font = text.font
 				if text.bold?
 					context.font = "bold #{ context.font }"
+
+				xPos = if text.centered[ 0 ]
+					renderable.position[ 0 ] -
+						context.measureText( text.string ).width / 2
+				else
+					renderable.position[ 0 ]
+
+				yPos = if text.centered[ 1 ]
+					renderable.position[ 1 ] + text.size / 2
+				else
+					renderable.position[ 1 ]
+
 				context.fillText(
 					text.string,
-					renderable.position[ 0 ],
-					renderable.position[ 1 ] )
+					xPos,
+					yPos )
 				
 		createDisplay: ->
 			canvas  = document.getElementById( "canvas" )
