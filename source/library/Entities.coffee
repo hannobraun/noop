@@ -1,7 +1,13 @@
 define "Entities", [], ->
 	module =
 		createEntity: ( factories, components, type, args ) ->
-			entity = factories[ type ]( args )
+			factory = factories[ type ]
+
+			unless factory?
+				throw "Entity type \"#{ type }\" is not known."
+
+
+			entity = factory( args )
 			for componentName, component of entity.components
 				unless components[ componentName ]?
 					components[ componentName ] = {}
