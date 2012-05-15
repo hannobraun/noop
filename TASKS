@@ -11,9 +11,6 @@
 	Setting the damping factor in collision response to anything other than
 	zero causes some strange behavior. This needs to be investigated.
 2012-05-09:
-	There should be a nice error message, if the factory function for an entity
-	can not be found.
-2012-05-09:
 	Renderable creation should be easier and require less code.
 	- There should be two factory functions, one which creates renderables that
 	  reference a resource, another which creates renderables that contain the
