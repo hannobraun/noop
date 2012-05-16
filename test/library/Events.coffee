@@ -79,3 +79,12 @@ describe "Events", ->
 
 		expect( eventForSubscriber      ).to.equal( eventFromPublisher )
 		expect( eventForOtherSubscriber ).to.equal( null               )
+
+	it "should throw an exception, if anything but an array is passed for topics", ->
+		error = try
+			Events.subscribe( subscribers, "keyDown", "enter", ( event ) -> )
+			false
+		catch error
+			true
+
+		expect( error ).to.equal( true )

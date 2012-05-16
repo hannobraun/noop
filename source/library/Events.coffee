@@ -22,6 +22,9 @@ define "Events", [], ->
 			{}
 
 		subscribe: ( subscribers, eventType, topics, subscriber ) ->
+			unless topics instanceof Array
+				throw "You must specify an array of topics."
+
 			subscribersByTopic = subscribers[ eventType ]
 			unless subscribersByTopic?
 				subscribersByTopic = {}
