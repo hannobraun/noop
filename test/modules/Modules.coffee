@@ -4,7 +4,7 @@ describe "Modules", ->
 	
 	it "should define a simple module without dependencies", ->
 		moduleLoaded = false
-		define "Module", [], ->
+		module "Module", [], ->
 			moduleLoaded = true
 
 		load( "Module" )
@@ -14,10 +14,10 @@ describe "Modules", ->
 	it "should pass a module's dependency into a module", ->
 		dependencyModule = ""
 
-		define "Dependency", [], ->
+		module "Dependency", [], ->
 			"dependency"
 
-		define "Module", [ "Dependency" ], ( Dependency ) ->
+		module "Module", [ "Dependency" ], ( Dependency ) ->
 			dependencyModule = Dependency
 
 		load( "Module" )
@@ -27,24 +27,24 @@ describe "Modules", ->
 	it "should load every module only once", ->
 		timesLoaded = 0
 
-		define "Dependency", [], ->
+		module "Dependency", [], ->
 			timesLoaded += 1
 
-		define "ModuleA", [ "Dependency" ], ->
+		module "ModuleA", [ "Dependency" ], ->
 
-		define "ModuleB", [ "Dependency" ], ->
+		module "ModuleB", [ "Dependency" ], ->
 
-		define "MainModule", [ "ModuleA", "ModuleB" ], ->
+		module "MainModule", [ "ModuleA", "ModuleB" ], ->
 
 		load( "MainModule" )
 
 		expect( timesLoaded ).to.equal( 1 )
 
 	it "should throw an error, if two modules are defined with the same id", ->
-		define "Module", [], ->
+		module "Module", [], ->
 
 		caughtError = try
-			define "Module", [], ->
+			module "Module", [], ->
 			false
 		catch error
 			true
@@ -52,7 +52,7 @@ describe "Modules", ->
 		expect( caughtError ).to.equal( true )
 
 	it "should throw a nice error message, if a a module is loaded that doesn't exist", ->
-		define "Module", [], ->
+		module "Module", [], ->
 
 		error = try
 			load( "NonExistingModule" )
@@ -63,7 +63,7 @@ describe "Modules", ->
 		expect( error ).to.contain( "NonExistingModule" )
 
 	it "should throw a nice error message, if a dependency does not exist", ->
-		define "ExistingModule", [ "NonExistingModule" ], ->
+		module "ExistingModule", [ "NonExistingModule" ], ->
 
 		error = try
 			load( "ExistingModule" )

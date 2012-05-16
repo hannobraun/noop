@@ -1,4 +1,4 @@
-define "Camera", [ "Mat3x3", "Vec2", "Transform2d" ], ( Mat3x3, Vec2, Transform2d ) ->
+module "Camera", [ "Mat3x3", "Vec2", "Transform2d" ], ( Mat3x3, Vec2, Transform2d ) ->
 	module =
 		createCamera: ->
 			camera =

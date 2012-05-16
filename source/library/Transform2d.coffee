@@ -1,4 +1,4 @@
-define "Transform2d", [], ->
+module "Transform2d", [], ->
 	module =
 		identityMatrix: ->
 			[

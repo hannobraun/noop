@@ -1,4 +1,4 @@
-define "MainLoop", [], ->
+module "MainLoop", [], ->
 	maxPassedTimeInMs = 1000 / 30
 
 	defaultCallNextFrame =

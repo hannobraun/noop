@@ -1,4 +1,4 @@
-define "Events", [], ->
+module "Events", [], ->
 	publishToSubscribersOfEvent = ( subscribersByTopic, topic, event )->
 		if subscribersByTopic?
 			publishToSubscribersOfSubject(

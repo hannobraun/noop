@@ -1,4 +1,4 @@
-define "CollisionResponse", [], ->
+module "CollisionResponse", [], ->
 	module =
 		handleContacts: ( contacts, bodies, parameters ) ->
 			k = parameters.k # spring constant

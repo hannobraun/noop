@@ -1,4 +1,4 @@
-define "Input", [], ->
+module "Input", [], ->
 	keyNamesByCode =
 		8  : "backspace"
 		9  : "tab"

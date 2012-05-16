@@ -1,4 +1,4 @@
-define "Physics", [ "Vec2" ], ( Vec2 ) ->
+module "Physics", [ "Vec2" ], ( Vec2 ) ->
 	module =
 		parameters:
 			collisionResponse:

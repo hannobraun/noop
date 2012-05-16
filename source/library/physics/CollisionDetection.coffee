@@ -1,4 +1,4 @@
-define "CollisionDetection", [ "Vec2" ], ( Vec2 ) ->
+module "CollisionDetection", [ "Vec2" ], ( Vec2 ) ->
 	module =
 		createCircle: ( radius ) ->
 			shape =

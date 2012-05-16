@@ -1,4 +1,4 @@
-define "VelocityVerletIntegrator", [], ->
+module "VelocityVerletIntegrator", [], ->
 	module =
 		integrate: ( bodies, passedTimeInS ) ->
 			for entityId, body of bodies
