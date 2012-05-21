@@ -3,6 +3,10 @@ module "Vec2", [], ->
 		copy: ( v ) ->
 			[ v[ 0 ], v[ 1 ] ]
 
+		overwrite: ( v1, v2 ) ->
+			v1[ 0 ] = v2[ 0 ]
+			v1[ 1 ] = v2[ 1 ]
+
 		scale: ( v, s ) ->
 			v[ 0 ] *= s
 			v[ 1 ] *= s

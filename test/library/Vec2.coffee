@@ -8,6 +8,14 @@ describe "Vec2", ->
 
 		expect( v2 ).to.eql( [ 0, 0 ] )
 
+	it "should overwrite an existing vector", ->
+		v1 = [ 0, 0 ]
+		v2 = [ 1, 2 ]
+
+		Vec2.overwrite( v1, v2 )
+
+		expect( v1 ).to.eql( v2 )
+
 	it "should scale a vector", ->
 		v = [ 1, -1 ]
 
