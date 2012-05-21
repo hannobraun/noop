@@ -33,6 +33,13 @@ module "Vec2", [], ->
 			v[ 0 ] /= length
 			v[ 1 ] /= length
 
+		orthogonal: ( v ) ->
+			x = v[ 0 ]
+			y = v[ 1 ]
+
+			v[ 0 ] = -y
+			v[ 1 ] = x
+
 		applyTransform: ( v, t ) ->
 			[ x, y ] = v
 			v[ 0 ] = x*t[ 0 ][ 0 ] + y*t[ 0 ][ 1 ] + 1*t[ 0 ][ 2 ]

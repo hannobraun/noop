@@ -71,6 +71,13 @@ describe "Vec2", ->
 
 		expect( v ).to.eql( [ 1, 0 ] )
 
+	it "should rotate a vector 90 degrees counter-clockwise", ->
+		v = [ 1, 1 ]
+
+		Vec2.orthogonal( v )
+
+		expect( v ).to.eql( [ -1, 1 ] )
+
 	it "should apply an affine transformation to the vector", ->
 		v = [ 1, 0 ]
 		t = [
