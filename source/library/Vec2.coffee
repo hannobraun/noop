@@ -28,7 +28,7 @@ module "Vec2", [], ->
 		squaredLength: ( v ) ->
 			v[ 0 ]*v[ 0 ] + v[ 1 ]*v[ 1 ]
 
-		unit: ( v ) ->
+		normalize: ( v ) ->
 			length = module.length( v )
 			v[ 0 ] /= length
 			v[ 1 ] /= length

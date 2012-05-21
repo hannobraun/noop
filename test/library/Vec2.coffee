@@ -67,7 +67,7 @@ describe "Vec2", ->
 	it "should create a unit vector from a vector", ->
 		v = [ 2, 0 ]
 
-		Vec2.unit( v )
+		Vec2.normalize( v )
 
 		expect( v ).to.eql( [ 1, 0 ] )
 

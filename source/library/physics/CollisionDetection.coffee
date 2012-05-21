@@ -37,7 +37,7 @@ module "CollisionDetection", [ "Vec2" ], ( Vec2 ) ->
 
 				if collision
 					normal = Vec2.copy( d )
-					Vec2.unit( normal )
+					Vec2.normalize( normal )
 
 					penetrationDepth = sumOfRadii - distance
 
