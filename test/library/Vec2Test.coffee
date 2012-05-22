@@ -15,6 +15,12 @@ module "Vec2Test", [ "Vec2" ], ( Vec2 ) ->
 
 			expect( v1 ).to.eql( v2 )
 
+		it "should compare two vectors", ->
+			v = [ 1, 2 ]
+
+			expect( Vec2.equals( v, [ 1, 2 ] ) ).to.equal( true  )
+			expect( Vec2.equals( v, [ 1, 3 ] ) ).to.equal( false )
+
 		it "should scale a vector", ->
 			v = [ 1, -1 ]
 
