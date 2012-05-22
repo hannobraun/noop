@@ -41,3 +41,9 @@
 	Right now, there are different draw functions for stroke'd and fill'd
 	primitives. Those should be consolidated. The matter of filling or stroking
 	should be handled by a flag in the resource.
+2012-05-22:
+	A module's dependencies should be passed in as a single object. This reduces
+	the amount of characters that have to be written for the dependency
+	declaration, as well as removing a source of potentially dangerous
+	duplication.
+	The name of the dependency object should be short, maybe something like "m".
