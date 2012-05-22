@@ -1,4 +1,4 @@
-module "VelocityVerletIntegrator", [], ->
+module "VelocityVerletIntegrator", [ "Vec2" ], ( Vec2 ) ->
 	module =
 		integrate: ( bodies, passedTimeInS ) ->
 			for entityId, body of bodies
