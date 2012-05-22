@@ -47,3 +47,17 @@
 	declaration, as well as removing a source of potentially dangerous
 	duplication.
 	The name of the dependency object should be short, maybe something like "m".
+2012-05-22:
+	Rendering.createDisplay should be split into two functions:
+	Rendering.createDisplay: Creates a display, including the canvas element,
+	                         but doesn't attach it to the DOM. This is useful
+	                         for creating off-screen canvases that might be
+	                         required for performance resons or to perform some
+	                         rendering tricks.
+	Rendering.attachDisplay: Attaches the created canvas to the DOM, as a child
+	                         element to another element whose id is given to
+	                         attachDisplay. The element could be a div
+	                         containing a fallback message. In the normal case,
+	                         the contents are replaced with the canvas. If the
+	                         browser doesn't support canvas nothing is done and
+	                         the fallback message is left intact.
