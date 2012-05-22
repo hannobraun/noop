@@ -24,4 +24,3 @@ module "Physics", [ "Vec2" ], ( Vec2 ) ->
 		update: ( bodies, passedTimeInS, integrate ) ->
 			integrate( bodies, passedTimeInS )
 			module.integrateOrientation( bodies, passedTimeInS )
-			module.applyForces( bodies )
