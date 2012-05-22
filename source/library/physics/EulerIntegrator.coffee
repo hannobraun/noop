@@ -1,4 +1,4 @@
-module "EulerIntegrator", [], ->
+module "EulerIntegrator", [ "Vec2" ], ( Vec2 ) ->
 	module =
 		integrate: ( bodies, passedTimeInS ) ->
 			for entityId, body of bodies
