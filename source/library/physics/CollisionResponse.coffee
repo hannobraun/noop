@@ -1,4 +1,4 @@
-module "CollisionResponse", [], ->
+module "CollisionResponse", [ "Vec2" ], ( Vec2 ) ->
 	module =
 		handleContacts: ( contacts, bodies, parameters ) ->
 			k = parameters.k # spring constant
