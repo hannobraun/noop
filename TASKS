@@ -66,3 +66,8 @@
 2012-05-22:
 	Input: Port mouse wheel support from Orbital Invaders (includes adding
 	data to currentInput, as well as support for preventing default).
+2012-05-24:
+	MainLoop: Three parameters should be passed into the main loop function:
+	- timeInMs: The current time in milliseconds. Useful for timestamps.
+	- gameTimeInS: The time since the start of the game.
+	- frameTimeInS: The time since the last frame.
