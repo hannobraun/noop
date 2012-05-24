@@ -69,5 +69,7 @@
 2012-05-24:
 	MainLoop: Three parameters should be passed into the main loop function:
 	- timeInMs: The current time in milliseconds. Useful for timestamps.
-	- gameTimeInS: The time since the start of the game.
+	- gameTimeInS: The time since the start of the game. This should match up
+	               with frameTimeInS (i.e., if the function is not called, this
+	               value should not increase).
 	- frameTimeInS: The time since the last frame.
