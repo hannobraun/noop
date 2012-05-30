@@ -76,3 +76,5 @@
 2012-05-25:
 	Bug: Centering a text vertically doesn't work. The text won't be displayed
 	at all.
+2012-05-30:
+	Make use of Events for the event functionality in Input.
