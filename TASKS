@@ -1,10 +1,6 @@
 2012-04-23:
 	Building UIs is very tedious. There should be some basic support for this.
 	For an example use case, see Tiny World War.
-2012-04-24:
-	There should be an easy way (a shell script or something) to create a
-	deployable page from game. Deployment should support deployment to a
-	gh-pages branch on GitHub.
 2012-05-09:
 	Renderable creation should be easier and require less code.
 	- There should be two factory functions, one which creates renderables that
