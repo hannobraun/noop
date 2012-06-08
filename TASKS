@@ -1,5 +1,3 @@
-2012-04-19:
-	When colliding, objects should transmit some of their rotation.
 2012-04-23:
 	Building UIs is very tedious. There should be some basic support for this.
 	For an example use case, see Tiny World War.
@@ -7,9 +5,6 @@
 	There should be an easy way (a shell script or something) to create a
 	deployable page from game. Deployment should support deployment to a
 	gh-pages branch on GitHub.
-2012-04-26:
-	Setting the damping factor in collision response to anything other than
-	zero causes some strange behavior. This needs to be investigated.
 2012-05-09:
 	Renderable creation should be easier and require less code.
 	- There should be two factory functions, one which creates renderables that
@@ -61,8 +56,6 @@
 	                         the contents are replaced with the canvas. If the
 	                         browser doesn't support canvas nothing is done and
 	                         the fallback message is left intact.
-2012-05-22:
-	Physics: Port time dilation features from Orbital Invaders.
 2012-05-22:
 	Input: Port mouse wheel support from Orbital Invaders (includes adding
 	data to currentInput, as well as support for preventing default).
